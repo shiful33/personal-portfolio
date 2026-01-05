@@ -143,7 +143,7 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="absolute top-[-200px] right-[170px] z-0 pointer-events-none"
+              className="absolute top-[-260px] right-[170px] z-0 pointer-events-none"
             >
               {/* Torch light */}
               <div
@@ -199,8 +199,8 @@ const Hero = () => {
           {/* Floating Social Icons */}
           <div className="absolute z-20 flex flex-col gap-5 -right-4 md:-right-10">
             {[
-              { icon: <FaGithub />, link: "#", color: "hover:bg-gray-800" },
-              { icon: <FaLinkedin />, link: "#", color: "hover:bg-blue-600" },
+              { icon: <FaGithub />, link: "https://github.com/shiful33", color: "hover:bg-gray-800" },
+              { icon: <FaLinkedin />, link: "www.linkedin.com/in/shiful-islam-webdeveloper", color: "hover:bg-blue-600" },
               { icon: <FaFacebook />, link: "#", color: "hover:bg-blue-500" },
             ].map((social, idx) => (
               <motion.a
