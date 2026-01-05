@@ -1,16 +1,72 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 This is my Animated personal Portfolio - 2026 Edition.
+A high-performance, visually stunning, and fully responsive Personal Portfolio built with the modern web stack. This project showcases my skills, projects, and professional journey with interactive animations and a premium user experience.
 
-Currently, two official plugins are available:
+✨ Key Features
+⚡ Modern Hero Section: Features a dynamic text-changing animation and a unique Liquid Bubble Shape animated profile image.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌓 Smooth Dark Mode: Fully integrated dark and light mode with an automatic system detection feature.
 
-## React Compiler
+🛠️ Dynamic Project Showcase: * Filtered categorization (MERN Stack, Frontend, Full Stack).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Functional Pagination system for easy browsing.
 
-## Expanding the ESLint configuration
+Interactive hover effects using Framer Motion.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🤖 AI-Powered ChatBot: A dynamic English-speaking assistant to help visitors learn about my skills and contact info instantly.
+
+📱 Fully Responsive: Optimized for all devices, from large 4K monitors to small mobile screens.
+
+🔝 Enhanced Navigation:
+
+Smooth scrolling with ID linkups.
+
+TopToDown floating button for quick navigation.
+
+📄 CV Download: Direct PDF download integration with hover animations.
+
+🛠️ Tech Stack
+Frontend: React.js, Tailwind CSS
+
+Animations: Framer Motion
+
+Icons: React Icons (Fa, Hi, Gi, Gr)
+
+Deployment: Vercel / Netlify
+
+📸 Preview
+Include a screenshot or a GIF of your portfolio here
+
+🚀 Getting Started
+Clone the repository:
+
+Bash
+
+git clone https://github.com/your-username/your-repo-name.git
+Install dependencies:
+
+Bash
+
+npm install
+Run the development server:
+
+Bash
+
+npm run dev
+
+## 📂 Project Structure
+```text
+├── src
+│   ├── assets         # Images and PDFs
+│   ├── components     # Reusable UI components (Hero, Projects, ChatBot, etc.)
+│   ├── data           # Project and Skills data files
+│   ├── App.jsx        # Main application logic
+│   └── main.jsx       # Entry point
+📩 Contact Me
+Feel free to reach out if you have any questions or want to collaborate!
+
+Email: shwapon.joti@gmail.com
+
+LinkedIn: www.linkedin.com/in/shiful-islam-webdeveloper
+
+GitHub: https://github.com/shiful33/personal-portfolio
