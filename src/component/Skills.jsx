@@ -35,9 +35,9 @@ const Skills = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-[24px] font-extrabold mb-6 text-[#021b52] dark:text-white leading-tight font-title"
+            className="text-xl md:text-[24px] font-extrabold mb-6 text-[#000b69] dark:text-white leading-tight font-title title-shadow-sm"
           >
-            Technologies <span className="text-orange-500"> I Use</span>
+            Technologies <span className="text-[#ff6900]"> I Use</span>
           </motion.h2>
         </div>
 

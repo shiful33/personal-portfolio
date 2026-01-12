@@ -21,13 +21,13 @@ const Navbar = () => {
 
   // Theme Toggle Function
   useEffect(() => {
-  const htmlElement = document.documentElement;
-  if (isDark) {
-    htmlElement.classList.add('dark');
-  } else {
-    htmlElement.classList.remove('dark');
-  }
-}, [isDark]);
+    const htmlElement = document.documentElement;
+    if (isDark) {
+      htmlElement.classList.add("dark");
+    } else {
+      htmlElement.classList.remove("dark");
+    }
+  }, [isDark]);
 
   const navLinks = [
     { name: "Home", link: "#hero", icon: <HiOutlineHome /> },
@@ -42,13 +42,11 @@ const Navbar = () => {
     <nav id="home" className="fixed top-0 left-0 z-50 w-full px-4 py-6">
       <div className="flex items-center justify-between px-6 py-3 mx-auto transition-all duration-500 border shadow-2xl max-w-7xl bg-white/10 dark:bg-black/20 backdrop-blur-lg border-white/20 dark:border-white/10 rounded-2xl">
         {/* Logo */}
-        <div className="flex items-center gap-2 cursor-pointer group">
-          <div className="px-3 py-2 text-white bg-orange-500 shadow-lg rounded-xl shadow-orange-500/20 group-hover:rotate-12">
-          <SiCodeceptjs />
-          </div>
-          <span className="text-xl font-bold tracking-wider text-black dark:text-white">
-            Shiful
+        <div className="flex items-center gap-2 text-xl font-black text-gray-600 dark:text-white text-shadow-sm font-title">
+          <span className="px-3 py-1 text-white bg-[#ff6900] shadow-lg rounded-xl shadow-orange-500/20">
+            <SiCodeceptjs />
           </span>
+          Shiful Islam<span className="text-[#ff6900]"></span>
         </div>
 
         {/* Desktop Links with Icons & Active State */}
@@ -60,8 +58,8 @@ const Navbar = () => {
                 onClick={() => setActive(item.name)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ${
                   active === item.name
-                    ? "bg-orange-500 text-white shadow-md shadow-orange-500/20"
-                    : "text-gray-600 dark:text-gray-300 hover:text-orange-500"
+                    ? "bg-[#ff6900] text-white shadow-md shadow-orange-500/20"
+                    : "text-gray-600 dark:text-gray-300 hover:text-[#ff6900] text-shadow-sm"
                 }`}
               >
                 <span className="text-lg">{item.icon}</span>
@@ -78,11 +76,15 @@ const Navbar = () => {
             onClick={() => setIsDark(!isDark)}
             className="p-2.5 rounded-xl bg-gray-100 dark:bg-white/10 text-orange-500 dark:text-yellow-400 hover:scale-110 transition-all active:scale-95 border border-gray-200 dark:border-white/10 cursor-pointer"
           >
-            {isDark ? <BiSolidTorch size={20} className="rotate-180"/> : <FiSun size={20} />}
+            {isDark ? (
+              <BiSolidTorch size={20} className="rotate-180" />
+            ) : (
+              <FiSun size={20} />
+            )}
           </button>
 
           {/* Contact Button */}
-          <button className="hidden md:block bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-orange-500/30 active:scale-95">
+          <button className="hidden md:block bg-[#ff6900] hover:bg-[#e05e00] text-white px-6 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-orange-500/30 active:scale-95 text-shadow-sm cursor-pointer">
             Hire Me
           </button>
 

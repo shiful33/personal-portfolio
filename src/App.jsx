@@ -9,19 +9,24 @@ import Projects from './component/Projects';
 import About from './component/About';
 import TopToDown from './component/TopToDown';
 import ChatBot from './component/ChatBot';
+import SkillMarquee from './component/SkillMarquee';
 
 
 
 function App() {
   return (
-    <div className="min-h-screen font-sans selection:bg-orange-500/30">
+    <div className="overflow-x-hidden w-full min-h-screen relative bg-white dark:bg-[#160014]">
       
       <Navbar />
 
       <main>
         <Hero />
-        <section id="projects" className="">
+        <section id="about" className="">
           <About />
+        </section>
+
+        <section id="skillMarquee" className="">
+          <SkillMarquee />
         </section>
 
         <section id="skills" className="">

@@ -17,12 +17,12 @@ const About = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-xl md:text-[26px] font-extrabold text-left mb-16 text-[#021b52] dark:text-white font-title">
-              About <span className="text-orange-500">Me</span>
+            <h4 className="text-xl md:text-[26px] font-extrabold text-left mb-16 text-[#000b69] dark:text-white font-title title-shadow-sm">
+              About <span className="text-[#ff6900]">Me</span>
             </h4>
-            <h2 className="text-xl md:text-[22px] font-extrabold mb-6 text-[#021b52] dark:text-white leading-tight font-title">
+            <h2 className="text-xl md:text-[24px] font-extrabold mb-6 text-[#000b69] dark:text-white leading-tight font-title title-shadow-sm">
               I'll Design
-              <span className="text-orange-500"> Modern Web</span> Solutions
+              <span className="text-[#ff6900]"> Modern Web</span> Solutions
             </h2>
             <p className="mb-6 text-lg leading-relaxed text-gray-600 dark:text-gray-400 font-body">
               Hello again! I'm Shiful Islam, a passionate Full Stack Developer
@@ -37,7 +37,7 @@ const About = () => {
               From conceptualization to deployment, I love seeing projects come
               to life. Let's build something amazing together!
             </p>
-            <button className="px-8 py-3 font-bold text-white transition-all bg-orange-500 rounded-full shadow-lg hover:bg-orange-600">
+            <button className="px-8 py-3 font-bold text-white transition-all bg-[#ff6900] rounded-full shadow-lg hover:bg-[#ee6300]">
               Contact Me
             </button>
           </motion.div>
@@ -75,7 +75,7 @@ const About = () => {
               style={{ zIndex: 0, display: "block !important", opacity: 1 }}
             ></motion.div>
 
-            {/* ABOUT IMAGE (Shudhu ekhane Bubble & Animation add kora hoyeche) */}
+            {/* ABOUT IMAGE */}
             <motion.div
               animate={{
                 y: [0, -15, 0],
@@ -112,11 +112,11 @@ const About = () => {
               }}
               className="absolute bottom-6 right-8 md:right-20 bg-white dark:bg-zinc-800 p-4 md:p-6 rounded-2xl shadow-2xl border border-gray-200 dark:border-zinc-700 flex items-center gap-4 min-w-[180px] z-20"
             >
-              <div className="flex items-center justify-center w-12 h-12 text-2xl font-bold text-white bg-orange-500 rounded-lg">
+              <div className="flex items-center justify-center w-12 h-12 text-2xl font-bold text-white bg-[#ff6900] rounded-lg">
                 2+
               </div>
               <div>
-                <h4 className="text-[#021b52] dark:text-white font-bold text-lg leading-tight whitespace-nowrap">
+                <h4 className="text-[#000b69] dark:text-white font-bold text-lg leading-tight whitespace-nowrap">
                   Years
                 </h4>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
