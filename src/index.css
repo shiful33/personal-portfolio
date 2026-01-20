@@ -48,17 +48,3 @@ html, body {
   text-shadow: 1px 1px 0px #ff6900, 
                3px 3px 5px rgba(0, 11, 105, 0.3);
 }
-
-/* @layer base {
-  body {
-    @apply bg-[#001116]
-           text-[#001f64] transition-colors duration-500 min-h-screen;
-    background-attachment: fixed;
-  }
-
-  .dark body {
-    @apply bg-[#001116] 
-           text-white transition-colors duration-500 min-h-screen;
-    background-attachment: fixed;
-  }
-} */
