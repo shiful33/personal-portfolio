@@ -16,7 +16,7 @@ import { SiCodeceptjs } from "react-icons/si";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
   const [active, setActive] = useState("Home");
 
   // Theme Toggle Function
