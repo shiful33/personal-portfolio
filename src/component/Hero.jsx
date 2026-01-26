@@ -169,7 +169,7 @@ const Hero = () => {
             <span className="text-[#ff6900] relative">
               Islam
               <svg
-                className="absolute left-0 w-full -bottom-9"
+                className="absolute left-0 w-full lg:-bottom-9"
                 viewBox="0 0 100 20"
                 preserveAspectRatio="none"
               >
@@ -231,8 +231,8 @@ const Hero = () => {
             {/* RESUME Button: PDF Download */}
             <motion.a
               whileHover={{ y: -5 }}
-              href="/Shiful-Frontend developer.pdf"
-              download="Shiful-Frontend-Developer-Resume.pdf"
+              href="/Shiful_Resume.pdf"
+              download="Shiful_Resume.pdf"
               className="flex items-center gap-3 px-8 py-4 font-bold text-[#ff6900] border-2 border-[#ff6900] rounded-full hover:bg-[#ff6900] hover:text-white transition-all duration-300 group text-shadow-sm"
             >
               RESUME{" "}
