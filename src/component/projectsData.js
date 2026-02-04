@@ -83,8 +83,8 @@ export const projectsData = [
 
   {
     id: 9,
-    title: "Best Fashion Of Winter E-Commerce Web Design",
-    category: "Full Stack, MERN Stack",
+    title: "Reliable Caregiving Services You Can Trust",
+    category: "MERN Stack, Full Stack",
     image: "https://ibb.co.com/8LYS86bj",
     desc: "This Twitch clone built with Next.js, Prisma, Tailwind, PostgreSQL, and TypeScript offers RTMP/WHIP streaming, real-time chat, and viewer count.",
     technologies: ["Next.js", "Node.js", "JavaScript", "Tailwind CSS", "Vercel"],
