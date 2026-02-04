@@ -16,7 +16,7 @@ export const projectsData = [
     image: "https://i.ibb.co.com/B5vcphrJ/img13.png",
     desc: "Google Docs Clone is a full-stack app built with Next.js 15, Shadcn UI, and Tailwind CSS, offering real-time editing, collaboration, and comments.",
     technologies: ["Next.js", "Node.js", "JavaScript", "Tailwind CSS"],
-    live: "https://care-io-next-js.vercel.app/",
+    live: "https://study-partner-web-client-shiful33.netlify.app",
     github: "https://github.com/shiful33/care.io-next.js",
   },
   {
