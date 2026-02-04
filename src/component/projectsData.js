@@ -84,11 +84,11 @@ export const projectsData = [
   {
     id: 9,
     title: "Best Fashion Of Winter E-Commerce Web Design",
-    category: "Frontend, E-Commerce",
-    image: "https://i.ibb.co.com/KcyP5j62/img10.png",
+    category: "Full Stack, MERN Stack",
+    image: "https://ibb.co.com/8LYS86bj",
     desc: "This Twitch clone built with Next.js, Prisma, Tailwind, PostgreSQL, and TypeScript offers RTMP/WHIP streaming, real-time chat, and viewer count.",
-    technologies: ["React.js", "Node.js", "Tailwind Css", "MongoDB", "Firebase"],
-    live: "https://tailwind-e-commerce-project.netlify.app/",
+    technologies: ["Next.js", "Node.js", "JavaScript", "Tailwind CSS", "Vercel"],
+    live: "https://care-io-next-js.vercel.app",
     github: "https://app.netlify.com/projects/graceful-sprite-e76c6b/overview",
   },
   {
