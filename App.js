@@ -1,15 +1,35 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import Loader from "./components/Loader";
 
-const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
-useEffect(() => {
-  const root = window.document.documentElement;
-  
-  if (theme === "dark") {
-    root.classList.add("dark");
-  } else {
-    root.classList.remove("dark");
-  }
-  
-  localStorage.setItem("theme", theme);
-}, [theme]);
+
+function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // 2/3 second after loader stope
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2500); 
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div>
+      <AnimatePresence>
+        {loading && <Loader key="loader" />}
+      </AnimatePresence>
+
+      {!loading && (
+        <main>
+          {/* Main portfolio content */}
+          <App />
+        </main>
+      )}
+    </div>
+  );
+}
+
+export default App;

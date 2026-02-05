@@ -85,7 +85,7 @@ export const projectsData = [
     id: 9,
     title: "Reliable Caregiving Services You Can Trust",
     category: "MERN Stack, Full Stack",
-    image: "https://ibb.co.com/8LYS86bj",
+    image: "https://i.ibb.co.com/JRpZWg1q/Screenshot-2026-02-05-063220.png",
     desc: "This Twitch clone built with Next.js, Prisma, Tailwind, PostgreSQL, and TypeScript offers RTMP/WHIP streaming, real-time chat, and viewer count.",
     technologies: ["Next.js", "Node.js", "JavaScript", "Tailwind CSS", "Vercel"],
     live: "https://care-io-next-js.vercel.app",

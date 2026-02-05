@@ -3,7 +3,6 @@ import {
   HiMenuAlt3,
   HiX,
   HiOutlineHome,
-  HiOutlineUser,
   HiOutlineBriefcase,
   HiOutlineMail,
 } from "react-icons/hi";
@@ -29,6 +28,40 @@ const Navbar = () => {
     }
   }, [isDark]);
 
+  // Scroll Spy Logic
+  useEffect(() => {
+    const handleScroll = () => {
+      const navLinks = [
+        { name: "Home", id: "hero" },
+        { name: "About", id: "about" },
+        { name: "Skills", id: "skills" },
+        { name: "Services", id: "services" },
+        { name: "Projects", id: "projects" },
+        { name: "Contact", id: "contact" },
+      ];
+
+      const scrollPosition = window.scrollY + 150;
+
+      navLinks.forEach((item) => {
+        const element = document.getElementById(item.id);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const height = element.offsetHeight;
+
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + height
+          ) {
+            setActive(item.name);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const navLinks = [
     { name: "Home", link: "#hero", icon: <HiOutlineHome /> },
     { name: "About", link: "#about", icon: <FaUserAstronaut /> },
@@ -39,26 +72,25 @@ const Navbar = () => {
   ];
 
   return (
-    <nav id="home" className="fixed top-0 left-0 z-50 w-full px-4 py-6">
+    <nav className="fixed top-0 left-0 z-50 w-full px-4 py-6">
       <div className="flex items-center justify-between px-6 py-3 mx-auto transition-all duration-500 border shadow-2xl max-w-7xl bg-white/10 dark:bg-black/20 backdrop-blur-lg border-white/20 dark:border-white/10 rounded-2xl">
         {/* Logo */}
         <div className="flex items-center gap-2 text-xl font-black text-gray-600 dark:text-white text-shadow-sm font-title">
           <span className="px-3 py-1 text-white bg-[#ff6900] shadow-lg rounded-xl shadow-orange-500/20">
             <SiCodeceptjs />
           </span>
-          Shiful Islam<span className="text-[#ff6900]"></span>
+          Shiful Islam
         </div>
 
-        {/* Desktop Links with Icons & Active State */}
+        {/* Desktop Links with Active State */}
         <ul className="items-center hidden gap-2 md:flex">
           {navLinks.map((item) => (
             <li key={item.name}>
               <a
                 href={item.link}
-                onClick={() => setActive(item.name)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ${
                   active === item.name
-                    ? "bg-[#ff6900] text-white shadow-md shadow-orange-500/20"
+                    ? "bg-[#ff6900] text-white shadow-md shadow-orange-500/20 scale-105"
                     : "text-gray-600 dark:text-gray-300 hover:text-[#ff6900] text-shadow-sm"
                 }`}
               >
@@ -69,9 +101,9 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Right Side: Theme Toggle + Button */}
+        {/* Right Side Tools */}
         <div className="flex items-center gap-4">
-          {/* Theme Switcher Button */}
+          {/* Theme Switcher */}
           <button
             onClick={() => setIsDark(!isDark)}
             className="p-2.5 rounded-xl bg-gray-100 dark:bg-white/10 text-orange-500 dark:text-yellow-400 hover:scale-110 transition-all active:scale-95 border border-gray-200 dark:border-white/10 cursor-pointer"
@@ -83,12 +115,12 @@ const Navbar = () => {
             )}
           </button>
 
-          {/* Contact Button */}
+          {/* Hire Me Button */}
           <button className="hidden md:block bg-[#ff6900] hover:bg-[#e05e00] text-white px-6 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-orange-500/30 active:scale-95 text-shadow-sm cursor-pointer">
             Hire Me
           </button>
 
-          {/* Mobile Menu Icon */}
+          {/* Mobile Menu Toggle */}
           <div
             className="text-3xl text-orange-500 cursor-pointer md:hidden"
             onClick={() => setIsOpen(!isOpen)}
@@ -113,9 +145,8 @@ const Navbar = () => {
                 href={item.link}
                 onClick={() => {
                   setIsOpen(false);
-                  setActive(item.name);
                 }}
-                className={`flex items-center gap-4 p-4 rounded-xl font-medium ${
+                className={`flex items-center gap-4 p-4 rounded-xl font-medium transition-all ${
                   active === item.name
                     ? "bg-orange-500 text-white"
                     : "text-gray-700 dark:text-gray-300"
