@@ -144,7 +144,7 @@ const Navbar = () => {
             </button>
 
             {langOpen && (
-              <div className="absolute top-14 right-0 bg-white dark:bg-[#160014] border border-gray-200 dark:border-white/10 rounded-xl shadow-xl p-2 flex flex-col gap-1 min-w-[100px] cursor-pointer">
+              <div className="absolute top-14 right-0 bg-white dark:bg-[#727272] border border-gray-200 dark:border-white/10 rounded-xl shadow-xl p-2 flex flex-col gap-1 min-w-[100px] cursor-pointer">
                 <button
                   onClick={() => changeLanguage("en")}
                   className="px-4 py-2 text-sm transition-all rounded-lg cursor-pointer hover:bg-orange-500 hover:text-white"
