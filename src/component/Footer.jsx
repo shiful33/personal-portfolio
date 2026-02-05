@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import {
   FaFacebookF,
   FaGithub,
@@ -10,6 +11,7 @@ import {
 import { SiCodeceptjs } from "react-icons/si";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -17,15 +19,8 @@ const Footer = () => {
       {/* FULL WIDTH ANIMATED SEA WAVES */}
       <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
         <motion.div
-          animate={{
-            x: [0, -80, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          /* w-[110%] & left-[-5%] */
+          animate={{ x: [0, -80, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           className="absolute bottom-0 left-[-5%] w-[110%] h-[350px] opacity-40 dark:opacity-20"
         >
           <svg
@@ -42,16 +37,13 @@ const Footer = () => {
         </motion.div>
       </div>
 
-      {/* Background Decoration Line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-gray-200 dark:via-zinc-800 to-transparent"></div>
-
       <div className="container relative z-10 mx-auto">
         <div className="grid items-start grid-cols-1 gap-12 mb-16 md:grid-cols-3">
-          {/* 1. Logo & Bio */}
+          {/* Logo & Bio */}
           <div className="space-y-6">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-2 text-xl font-black text-gray-600 dark:text-white text-shadow-sm font-title"
+              className="flex items-center gap-2 text-xl font-black text-gray-700 dark:text-white font-title"
             >
               <span className="px-3 py-1 text-white bg-[#ff6900] shadow-lg rounded-xl shadow-orange-500/20">
                 <SiCodeceptjs />
@@ -59,8 +51,7 @@ const Footer = () => {
               Shiful Islam
             </motion.div>
             <p className="max-w-xs leading-relaxed text-gray-500 dark:text-gray-400">
-              Modern MERN Stack Developer specializing in building premium user
-              experiences and robust web solutions.
+              {t("footer_bio")}
             </p>
             {/* Social Links */}
             <div className="flex gap-4">
@@ -97,11 +88,11 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* 2. Quick Links */}
+          {/* Quick Links */}
           <div className="grid grid-cols-2 gap-8">
             <div>
               <h4 className="text-[#021b52] dark:text-white font-bold mb-6 uppercase tracking-widest text-sm">
-                Services
+                {t("footer_services")}
               </h4>
               <ul className="space-y-4 text-gray-500 dark:text-gray-400">
                 <li className="transition-colors cursor-pointer hover:text-orange-500">
@@ -117,7 +108,7 @@ const Footer = () => {
             </div>
             <div>
               <h4 className="text-[#021b52] dark:text-white font-bold mb-6 uppercase tracking-widest text-sm">
-                Company
+                {t("footer_company")}
               </h4>
               <ul className="space-y-4 text-gray-500 dark:text-gray-400">
                 <li className="transition-colors cursor-pointer hover:text-orange-500">
@@ -133,37 +124,38 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* 3. Newsletter / Quote */}
+          {/* 3. Hire Me Box */}
           <div className="bg-orange-500/5 dark:bg-orange-500/10 p-8 rounded-[2rem] border border-orange-500/10 backdrop-blur-sm relative z-20">
             <h4 className="text-lg font-bold text-[#021b52] dark:text-white mb-4">
-              Start a project?
+              {t("footer_hire_title")}
             </h4>
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
-              I’m available for freelance projects and full-time positions.
+              {t("footer_hire_desc")}
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="w-full py-3 font-bold text-white bg-orange-500 shadow-lg cursor-pointer rounded-xl shadow-orange-500/20"
             >
-              Hire Me Now
+              {t("footer_hire_btn")}
             </motion.button>
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright Section */}
-        <div className="relative z-20 flex flex-col items-center justify-between gap-6 pt-10 dark:border-zinc-800 md:flex-row">
-          <p className="flex items-center gap-1 text-sm text-gray-100 dark:text-gray-400">
+        {/* Bottom Bar */}
+        <div className="relative z-20 flex flex-col items-center justify-between gap-6 pt-10 border-t border-gray-200/30 dark:border-zinc-800 md:flex-row">
+          <p className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
             <span>©</span> {currentYear}{" "}
             <span className="font-bold text-[#021b52] dark:text-white">
               Shiful Islam.
             </span>{" "}
-            All Rights Reserved.
+            {t("footer_all_rights")}
           </p>
 
-          <div className="flex items-center gap-2 text-sm text-gray-100 dark:text-gray-400">
-            Developed with <FaHeart className="text-red-500 animate-pulse" /> by
-            <span className="pl-1 font-bold text-[#021b52] cursor-pointer">
+          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+            {t("footer_developed")}{" "}
+            <FaHeart className="text-red-500 animate-pulse" /> {t("footer_by")}
+            <span className="pl-1 font-bold text-[#021b52] dark:text-white cursor-pointer hover:text-orange-500 transition-colors">
               Shiful
             </span>
           </div>

@@ -4,13 +4,17 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { HiDownload } from "react-icons/hi";
 import heroImg from "../assets/heroImg.png";
+import { useTranslation } from "react-i18next";
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   const titles = [
-    "Frontend Developer",
-    "MERN Stack Developer",
-    "Full Stack Developer",
+    t("hero_role_frontend"),
+    t("hero_role_mern"),
+    t("hero_role_fullstack"),
   ];
+
   const [index, setIndex] = useState(0);
   const [isDark, setIsDark] = useState(false);
 
@@ -50,10 +54,9 @@ const Hero = () => {
       id="hero"
       className="dark:bg-[#160014] min-h-screen flex items-center px-6 md:px-20 transition-colors duration-500 overflow-hidden pt-40 md:pt-20 relative"
     >
-      {/* --- LIGHT MODE DYNAMIC BACKGROUND (Only in Light Mode) --- */}
+      {/* --- LIGHT MODE DYNAMIC BACKGROUND --- */}
       {!isDark && (
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          {/* Floating Decorative Circles */}
           {[...Array(6)].map((_, i) => (
             <motion.div
               key={i}
@@ -77,8 +80,6 @@ const Hero = () => {
               }}
             />
           ))}
-
-          {/* Abstract Moving Lines/Grids */}
           <div
             className="absolute inset-0 opacity-[0.03] dark:opacity-0"
             style={{
@@ -86,17 +87,12 @@ const Hero = () => {
               backgroundSize: "40px 40px",
             }}
           ></div>
-
-          {/* Soft Colorful Blurs for Light Mode */}
-          <div className="absolute top-[20%] -left-[10%] w-[40%] h-[40%] bg-blue-400/10 blur-[120px] rounded-full" />
-          <div className="absolute bottom-[10%] -right-[10%] w-[35%] h-[35%] bg-orange-400/10 blur-[120px] rounded-full" />
         </div>
       )}
 
-      {/* REALISTIC SPACE BACKGROUND (Only in Dark Mode) */}
+      {/* REALISTIC SPACE BACKGROUND (Dark Mode) */}
       {isDark && (
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          {/* Twinkling Stars */}
           {[...Array(50)].map((_, i) => (
             <motion.div
               key={i}
@@ -112,29 +108,22 @@ const Hero = () => {
             />
           ))}
 
-          {/* LARGE SPACESHIP MOVING BOTTOM TO TOP */}
+          {/* Spaceship Animation */}
           <motion.div
             animate={{
               y: ["110vh", "-20vh"],
               x: ["40vw", "45vw", "35vw"],
               rotate: [-10, -5, -10],
             }}
-            transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "linear",
-            }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
             className="absolute left-0"
           >
             <div className="relative flex flex-col items-center">
-              {/* Realistic Spaceship Image */}
               <img
                 src="https://i.ibb.co.com/ZRTs72QD/png-clipart-starcraft-brood-war-starcraft-ii-wings-of-liberty-starcraft-ii-nova-covert-ops-protoss-c.png"
                 alt="Spaceship"
                 className="w-22 md:w-30 drop-shadow-[0_0_30px_rgba(255,100,0,0.4)] relative z-10 -rotate-85"
               />
-
-              {/* Dynamic Thruster Flame */}
               <div className="absolute flex flex-col items-center -bottom-24">
                 <motion.div
                   animate={{
@@ -162,15 +151,15 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             className="mb-2 text-lg font-bold tracking-[0.3em] text-[#ff6900] font-title title-shadow-sm"
           >
-            WELCOME TO MY WORLD
+            {t("hero_welcome")}
           </motion.h4>
 
-          <h1 className="text-3xl md:text-5xl font-extrabold mb-4 text-[#000b69] dark:text-white leading-tight font-title text-shadow-sm">
-            I'm Shiful{" "}
+          <h1 className="text-2xl md:text-5xl font-extrabold mb-8 md:mb-16 text-[#000b69] dark:text-white leading-tight font-title text-shadow-sm">
+            {t("hero_hello")}{" "}
             <span className="text-[#ff6900] relative">
-              Islam
+              {t("hero_name_only")}
               <svg
-                className="absolute left-0 w-full lg:-bottom-9"
+                className="absolute left-0 w-full lg:-bottom-16"
                 viewBox="0 0 100 20"
                 preserveAspectRatio="none"
               >
@@ -188,8 +177,8 @@ const Hero = () => {
           </h1>
 
           <div className="flex items-center h-16 mb-4">
-            <h2 className="text-2xl font-semibold text-[#01073d] md:text-4xl dark:text-gray-300 text-shadow-sm">
-              A Passionate{" "}
+            <h2 className="text-[22px] font-semibold text-[#01073d] md:text-4xl dark:text-gray-300 text-shadow-sm">
+              {t("hero_passionate")}{" "}
               <span className="inline-block">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -207,16 +196,13 @@ const Hero = () => {
             </h2>
           </div>
 
-          <p className="max-w-lg p-4 mb-8 text-lg text-gray-700 border dark:text-gray-400 backdrop-blur-sm bg-white/5 rounded-xl border-white/10 ">
-            Designing and developing robust, full-stack solutions with a focus
-            on **MERN** stack and **Next.js**. I turn complex problems into
-            elegant, interactive web experiences.
+          <p className="max-w-lg py-4 mb-8 text-lg text-gray-700 border dark:text-gray-400 backdrop-blur-sm bg-white/5 rounded-xl border-white/10 text-shadow-sm">
+            {t("hero_desc")}
           </p>
 
-          <div className="flex flex-wrap gap-6">
-            {/* LET'S TALK Button: WhatsApp Link */}
+          <div className="flex flex-wrap gap-4">
             <motion.a
-              href="https://wa.me/8801711037548" // WhatsApp number link
+              href="https://wa.me/8801711037548"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{
@@ -226,47 +212,29 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
               className="px-10 py-4 font-bold text-white transition-all bg-gradient-to-r from-[#ff6900] to-[#e05e00] rounded-full shadow-xl cursor-pointer text-shadow-sm flex items-center justify-center"
             >
-              LET'S TALK
+              {t("hero_talk")}
             </motion.a>
 
-            {/* RESUME Button: PDF Download */}
             <motion.a
               whileHover={{ y: -5 }}
               href="/Shiful_Resume.pdf"
               download="Shiful_Resume.pdf"
               className="flex items-center gap-3 px-8 py-4 font-bold text-[#ff6900] border-2 border-[#ff6900] rounded-full hover:bg-[#ff6900] hover:text-white transition-all duration-300 group text-shadow-sm"
             >
-              RESUME{" "}
+              {t("hero_cv")}{" "}
               <HiDownload className="text-2xl transition-transform group-hover:rotate-12" />
             </motion.a>
           </div>
         </motion.div>
 
-        {/* Right Content */}
+        {/* Right Content - Hero Image */}
         <div className="relative flex items-center justify-center">
-          {isDark && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="absolute top-[-260px] right-[170px] z-0 pointer-events-none"
-            >
-              <div
-                className="hidden lg:block w-[300px] h-[500px] bg-gradient-to-b from-yellow-400/60 via-yellow-200/20 to-transparent rotate-5"
-                style={{
-                  clipPath: "polygon(50% 0%, 0% 100%, 120% 100%)",
-                  filter: "blur(40px)",
-                }}
-              />
-            </motion.div>
-          )}
-
           <div className="relative flex items-center justify-center md:ml-20">
             <motion.div
               animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               className="absolute w-[400px] h-[400px] md:w-[550px] md:h-[550px] bg-orange-500/20 dark:bg-orange-600/10 rounded-full blur-[100px] -z-10"
             />
-
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -283,19 +251,14 @@ const Hero = () => {
           </div>
 
           {/* Floating Social Icons */}
-          <div className="absolute z-20 flex flex-col gap-5 -right-4 md:-right-10">
+          <div className="absolute z-20 flex flex-col gap-5 -right-4">
             {[
-              {
-                icon: <FaGithub />,
-                link: "https://github.com/shiful33",
-                color: "hover:bg-gray-800",
-              },
+              { icon: <FaGithub />, link: "https://github.com/shiful33" },
               {
                 icon: <FaLinkedin />,
                 link: "https://www.linkedin.com/in/shiful-islam-webdeveloper",
-                color: "hover:bg-blue-400",
               },
-              { icon: <FaXTwitter />, link: "https://x.com/PiousO_B", color: "hover:bg-[#000b69]" },
+              { icon: <FaXTwitter />, link: "https://x.com/PiousO_B" },
             ].map((social, idx) => (
               <motion.a
                 key={idx}
@@ -307,7 +270,7 @@ const Hero = () => {
                 animate="animate"
                 transition={{ delay: 0.5 + idx * 0.2 }}
                 whileHover={{ scale: 1.2, x: 5 }}
-                className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white dark:bg-zinc-800 text-2xl rounded-full shadow-xl text-[#021b52] dark:text-white transition-all hover:text-white border border-gray-100 dark:border-zinc-700 cursor-pointer"
+                className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white hover:bg-orange-500 dark:bg-zinc-800 text-2xl rounded-full shadow-xl text-[#021b52] dark:text-white transition-all hover:text-white border border-gray-100 dark:border-zinc-700 cursor-pointer"
               >
                 <motion.div
                   animate={{ y: [0, -5, 0] }}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next"; // i18n ইমপোর্ট
 import {
   FaGithub,
   FaExternalLinkAlt,
@@ -13,18 +14,20 @@ import {
 } from "react-icons/fa";
 import { projectsData } from "./projectsData";
 
-const categories = [
-  { name: "All", icon: <FaGlobe /> },
-  { name: "Frontend", icon: <FaReact /> },
-  { name: "MERN Stack", icon: <FaLayerGroup /> },
-  { name: "Full Stack", icon: <FaServer /> },
-  { name: "E-Commerce", icon: <FaShoppingBag /> },
-];
-
 const Projects = () => {
+  const { t } = useTranslation(); // অনুবাদ হুক
   const [activeTab, setActiveTab] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 3;
+
+  // ক্যাটাগরিগুলো অনুবাদের সাথে ম্যাপিং
+  const categories = [
+    { name: "All", label: t("cat_all"), icon: <FaGlobe /> },
+    { name: "Frontend", label: t("cat_frontend"), icon: <FaReact /> },
+    { name: "MERN Stack", label: t("cat_mern"), icon: <FaLayerGroup /> },
+    { name: "Full Stack", label: t("cat_fullstack"), icon: <FaServer /> },
+    { name: "E-Commerce", label: t("cat_ecommerce"), icon: <FaShoppingBag /> },
+  ];
 
   const filteredProjects =
     activeTab === "All"
@@ -63,20 +66,8 @@ const Projects = () => {
         </svg>
       </div>
 
-      <div className="absolute -right-30 bottom-0 w-[800px] h-[900px] pointer-events-none opacity-10 dark:opacity-5 -z-0">
-        <svg
-          viewBox="0 0 200 200"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full fill-blue-500"
-        >
-          <path
-            d="M100,0 C150,50 200,100 100,200 C0,100 50,50 100,0 Z"
-            transform="rotate(150 100 100)"
-          />
-        </svg>
-      </div>
-
       <div className="container relative z-10 mx-auto">
+        {/* Section Header */}
         <div className="mb-16 text-center">
           <motion.h4
             initial={{ opacity: 0, y: 20 }}
@@ -84,11 +75,13 @@ const Projects = () => {
             viewport={{ once: true }}
             className="text-orange-500 font-bold uppercase tracking-[0.3em] mb-4 text-sm"
           >
-            Recent Projects
+            {t("proj_header")}
           </motion.h4>
-          <h2 className="text-xl md:text-[24px] font-extrabold mb-6 text-[#000b69] dark:text-white leading-tight font-title">
-            Latest <span className="text-[#ff6900]">Masterpieces</span>
+          <h2 className="text-[22px] md:text-[26px] font-extrabold mb-6 text-[#000b69] dark:text-white leading-tight font-title">
+            {t("proj_title_main")}{" "}
+            <span className="text-[#ff6900]">{t("proj_title_sub")}</span>
           </h2>
+          <div className="w-24 h-1.5 bg-[#ff6900] mx-auto rounded-full"></div>
         </div>
 
         {/* Category Buttons */}
@@ -100,7 +93,7 @@ const Projects = () => {
               className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 cursor-pointer ${
                 activeTab === cat.name
                   ? "bg-orange-500 text-white shadow-lg shadow-orange-500/30 scale-105"
-                  : "bg-gray-100 dark:bg-zinc-900 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-zinc-800"
+                  : "bg-gray-100 dark:bg-zinc-900 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-zinc-800 border border-transparent dark:border-zinc-800"
               }`}
             >
               <span
@@ -108,7 +101,7 @@ const Projects = () => {
               >
                 {cat.icon}
               </span>
-              {cat.name}
+              {cat.label}
             </button>
           ))}
         </div>
@@ -129,23 +122,25 @@ const Projects = () => {
                 whileHover={{ y: -10 }}
                 className="group bg-white/90 dark:bg-[#161b22]/90 backdrop-blur-md rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 dark:border-zinc-800 flex flex-col h-full"
               >
+                {/* Image Wrapper */}
                 <div className="relative h-56 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
                     className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-black/50 backdrop-blur-md rounded-lg text-[10px] font-bold text-white uppercase tracking-widest">
-                    {project.category}
+                  <div className="absolute top-4 left-4 px-3 py-1 bg-orange-500/80 backdrop-blur-md rounded-lg text-[10px] font-bold text-white uppercase tracking-widest">
+                    {project.category[0]}
                   </div>
                 </div>
 
                 <div className="flex flex-col flex-grow p-7">
                   <h3 className="text-[20px] font-bold text-[#021b52] dark:text-gray-100 mb-3 leading-tight group-hover:text-orange-500 transition-colors">
-                    {project.title}
+                    
+                    {project.title_key ? t(project.title_key) : project.title}
                   </h3>
                   <p className="text-gray-500 dark:text-gray-400 text-[13px] leading-relaxed mb-6 line-clamp-3">
-                    {project.desc}
+                    {project.desc_key ? t(project.desc_key) : project.desc}
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-8">
@@ -159,6 +154,7 @@ const Projects = () => {
                     ))}
                   </div>
 
+                  {/* Action Buttons */}
                   <div className="flex items-center gap-3 mt-auto">
                     <motion.a
                       whileTap={{ scale: 0.95 }}
@@ -174,7 +170,7 @@ const Projects = () => {
                       target="_blank"
                       className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-orange-500 text-white text-[12px] font-bold rounded-xl hover:bg-orange-600 shadow-lg transition-all"
                     >
-                      <FaExternalLinkAlt size={14} /> Live Demo
+                      <FaExternalLinkAlt size={14} /> {t("live_demo")}
                     </motion.a>
                   </div>
                 </div>
