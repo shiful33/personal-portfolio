@@ -14,7 +14,7 @@ const Loader = () => {
         transition={{ duration: 0.5 }}
         className="text-center"
       >
-        <h1 className="text-4xl font-bold tracking-widest text-[#000b69] md:text-6xl">
+        <h1 className="text-4xl font-bold tracking-widest text-[#000b69] md:text-6xl text-shadow-sm">
           Shiful Islam<span className="text-orange-500">.</span>
         </h1>
         
@@ -25,7 +25,7 @@ const Loader = () => {
           className="h-[4px] bg-orange-500 mt-2"
         />
         
-        <p className="mt-4 tracking-widest text-gray-500 uppercase text-md">
+        <p className="mt-4 tracking-widest text-gray-500 uppercase text-md text-shadow-sm">
           Portfolio is Loading...
         </p>
       </motion.div>
