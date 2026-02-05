@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { HiDownload } from "react-icons/hi";
 import heroImg from "../assets/heroImg.png";
 
@@ -294,7 +295,7 @@ const Hero = () => {
                 link: "https://www.linkedin.com/in/shiful-islam-webdeveloper",
                 color: "hover:bg-blue-400",
               },
-              { icon: <FaFacebook />, link: "#", color: "hover:bg-[#000b69]" },
+              { icon: <FaXTwitter />, link: "https://x.com/PiousO_B", color: "hover:bg-[#000b69]" },
             ].map((social, idx) => (
               <motion.a
                 key={idx}
