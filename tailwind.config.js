@@ -10,6 +10,9 @@ export default {
       colors: {
         primaryDark: '#0b0d11',
       },
+      animation: {
+    'spin-slow': 'spin 5s linear infinite',
+  },
     },
   },
   plugins: [],

@@ -5,9 +5,10 @@ import { FaXTwitter } from "react-icons/fa6";
 import { HiDownload } from "react-icons/hi";
 import heroImg from "../assets/heroImg.png";
 import { useTranslation } from "react-i18next";
+import Typewriter from "typewriter-effect";
 
 const Hero = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const titles = [
     t("hero_role_frontend"),
@@ -18,17 +19,8 @@ const Hero = () => {
   const [index, setIndex] = useState(0);
   const [isDark, setIsDark] = useState(false);
 
-  const socialVariants = {
-    initial: { opacity: 0, x: 20 },
-    animate: { opacity: 1, x: 0 },
-  };
-
-  const floatingTransition = {
-    duration: 2,
-    repeat: Infinity,
-    repeatType: "reverse",
-    ease: "easeInOut",
-  };
+  // আরবিক ল্যাঙ্গুয়েজ কিনা চেক করার জন্য
+  const isArabic = i18n.language === "ar";
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -107,35 +99,6 @@ const Hero = () => {
               }}
             />
           ))}
-
-          {/* Spaceship Animation */}
-          <motion.div
-            animate={{
-              y: ["110vh", "-20vh"],
-              x: ["40vw", "45vw", "35vw"],
-              rotate: [-10, -5, -10],
-            }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="absolute left-0"
-          >
-            <div className="relative flex flex-col items-center">
-              <img
-                src="https://i.ibb.co.com/ZRTs72QD/png-clipart-starcraft-brood-war-starcraft-ii-wings-of-liberty-starcraft-ii-nova-covert-ops-protoss-c.png"
-                alt="Spaceship"
-                className="w-22 md:w-30 drop-shadow-[0_0_30px_rgba(255,100,0,0.4)] relative z-10 -rotate-85"
-              />
-              <div className="absolute flex flex-col items-center -bottom-24">
-                <motion.div
-                  animate={{
-                    scaleY: [0.8, 1, 1.1, 0.8, 1],
-                    opacity: [0.7, 1, 0.8],
-                  }}
-                  transition={{ duration: 0.1, repeat: Infinity }}
-                  className="w-10 h-32 origin-top rounded-full bg-gradient-to-b from-orange-600 via-yellow-300 to-transparent blur-md"
-                />
-              </div>
-            </div>
-          </motion.div>
         </div>
       )}
 
@@ -145,7 +108,8 @@ const Hero = () => {
           initial={{ opacity: 0, x: -70 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="relative z-10 font-body"
+          className={`relative z-10 font-body ${isArabic ? "text-right" : "text-left"}`}
+          dir={isArabic ? "rtl" : "ltr"}
         >
           <motion.h4
             whileHover={{ scale: 1.05 }}
@@ -153,8 +117,7 @@ const Hero = () => {
           >
             {t("hero_welcome")}
           </motion.h4>
-
-          <h1 className="text-2xl md:text-5xl font-extrabold mb-8 md:mb-16 text-[#000b69] dark:text-white leading-tight font-title text-shadow-sm">
+          <h1 className="text-2xl md:text-4xl font-extrabold mb-8 md:mb-16 text-[#000b69] dark:text-white leading-tight font-title text-shadow-sm">
             {t("hero_hello")}{" "}
             <span className="text-[#ff6900] relative">
               {t("hero_name_only")}
@@ -175,9 +138,8 @@ const Hero = () => {
               </svg>
             </span>
           </h1>
-
           <div className="flex items-center h-16 mb-4">
-            <h2 className="text-[22px] font-semibold text-[#01073d] md:text-4xl dark:text-gray-300 text-shadow-sm">
+            <h2 className="text-[21px] font-semibold text-[#01073d] md:text-[30px] dark:text-gray-300 text-shadow-sm">
               {t("hero_passionate")}{" "}
               <span className="inline-block">
                 <AnimatePresence mode="wait">
@@ -196,9 +158,39 @@ const Hero = () => {
             </h2>
           </div>
 
-          <p className="max-w-lg py-4 mb-8 text-lg text-gray-700 border dark:text-gray-400 backdrop-blur-sm bg-white/5 rounded-xl border-white/10 text-shadow-sm">
-            {t("hero_desc")}
-          </p>
+          {/* --- FIX: CODE EDITOR BOX WITH LANGUAGE KEY --- */}
+          <div className="relative max-w-xl py-5 mb-8 overflow-hidden font-mono bg-[#ffffe7] dark:bg-[#02001a] border shadow-2xl text-sm backdrop-blur-sm rounded-xl border-white/10">
+            {/* Window Controls */}
+            <div className={`flex gap-1.5 px-4 mb-4 border-b border-white/5 pb-2 opacity-80 ${isArabic ? "flex-row-reverse" : ""}`}>
+              <div className="w-2.5 h-2.5 bg-[#ff5f56] rounded-full shadow-inner"></div>
+              <div className="w-2.5 h-2.5 bg-[#ffbd2e] rounded-full shadow-inner"></div>
+              <div className="w-2.5 h-2.5 bg-[#27c93f] rounded-full shadow-inner"></div>
+              <span className={`font-sans text-xs text-yellow-500 ${isArabic ? "mr-2" : "ml-2"}`}>
+                shiful.js
+              </span>
+            </div>
+
+            <div className="px-4 leading-relaxed tracking-tight">
+              <span className="text-purple-400">const</span>{" "}
+              <span className="text-blue-400">bio</span> ={" "}
+              <span className="text-orange-400">"</span>
+              <span className="text-[#01073d] dark:text-[#d8d7d7]">
+                <Typewriter
+                  key={i18n.language} // ল্যাঙ্গুয়েজ চেঞ্জ হলে এটি রিস্টার্ট হবে
+                  options={{
+                    strings: [t("hero_desc")],
+                    autoStart: true,
+                    loop: false,
+                    delay: 30,
+                    cursor: "▎",
+                    wrapperClassName: "inline",
+                  }}
+                />
+              </span>
+              <span className="text-orange-400">"</span>
+              <span className="text-[#01073d] dark:text-white">;</span>
+            </div>
+          </div>
 
           <div className="flex flex-wrap gap-4">
             <motion.a
@@ -228,58 +220,81 @@ const Hero = () => {
         </motion.div>
 
         {/* Right Content - Hero Image */}
-        <div className="relative flex items-center justify-center">
-          <div className="relative flex items-center justify-center md:ml-20">
-            <motion.div
-              animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-[400px] h-[400px] md:w-[550px] md:h-[550px] bg-orange-500/20 dark:bg-orange-600/10 rounded-full blur-[100px] -z-10"
-            />
-            <motion.div
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="relative z-10"
-            >
-              <div className="relative overflow-hidden border-none rounded-full shadow-2xl border-white/10">
+        <div className="relative flex items-center justify-center mt-20 lg:mt-0">
+          <motion.div
+            animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.4, 0.2] }}
+            transition={{ duration: 4, repeat: Infinity }}
+            className="absolute w-72 h-72 md:w-[500px] md:h-[500px] bg-orange-500 rounded-full blur-[120px] -z-10"
+          />
+
+          <div className="relative w-75 h-75 md:w-[420px] md:h-[420px] p-1 flex items-center justify-center mb-30 md:mb-0">
+            {/* Neon border */}
+            <div className="absolute inset-0 overflow-hidden rounded-[40px] rotate-[15deg]">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                className="absolute -inset-[100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_300deg,#ff6900_360deg)] opacity-100"
+              />
+            </div>
+
+            {/* Main image content */}
+            <div className="relative w-full h-full bg-[#FFF1E7] dark:bg-[#200113] rounded-[38px] rotate-[15deg] overflow-hidden flex items-center justify-center border-4 border-white/5 shadow-2xl transition-colors duration-500">
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="-rotate-[15deg] w-full h-full scale-125 md:scale-110"
+              >
                 <img
                   src={heroImg}
                   alt="Shiful"
-                  className="w-72 h-72 md:w-[400px] md:h-[400px] object-cover"
+                  className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
                 />
-              </div>
-            </motion.div>
-          </div>
+              </motion.div>
+            </div>
 
-          {/* Floating Social Icons */}
-          <div className="absolute z-20 flex flex-col gap-5 -right-4">
-            {[
-              { icon: <FaGithub />, link: "https://github.com/shiful33" },
-              {
-                icon: <FaLinkedin />,
-                link: "https://www.linkedin.com/in/shiful-islam-webdeveloper",
-              },
-              { icon: <FaXTwitter />, link: "https://x.com/PiousO_B" },
-            ].map((social, idx) => (
-              <motion.a
-                key={idx}
-                href={social.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={socialVariants}
-                initial="initial"
-                animate="animate"
-                transition={{ delay: 0.5 + idx * 0.2 }}
-                whileHover={{ scale: 1.2, x: 5 }}
-                className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white hover:bg-orange-500 dark:bg-zinc-800 text-2xl rounded-full shadow-xl text-[#021b52] dark:text-white transition-all hover:text-white border border-gray-100 dark:border-zinc-700 cursor-pointer"
-              >
-                <motion.div
-                  animate={{ y: [0, -5, 0] }}
-                  transition={floatingTransition}
+            {/* Social Icons */}
+            <div className="absolute z-30 flex flex-col gap-4 -translate-y-1/2 -right-16 md:-right-30 top-1/2">
+              {[
+                { icon: <FaGithub />, link: "https://github.com/shiful33" },
+                { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/shiful-islam-webdeveloper" },
+                { icon: <FaXTwitter />, link: "https://x.com/PiousO_B" },
+              ].map((social, idx) => (
+                <motion.a
+                  key={idx}
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 + idx * 0.1 }}
+                  whileHover={{
+                    scale: 1.2,
+                    x: 5,
+                    backgroundColor: "#ff6900",
+                    color: "#fff",
+                  }}
+                  className="w-10 h-10 md:w-14 md:h-14 flex items-center justify-center bg-white dark:bg-zinc-800 text-[#021b52] dark:text-white rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 transition-all cursor-pointer text-2xl"
                 >
                   {social.icon}
-                </motion.div>
-              </motion.a>
-            ))}
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Experience base */}
+            <motion.div
+              animate={{ y: [0, 15, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute z-20 hidden p-4 text-gray-600 bg-white border border-gray-100 shadow-2xl -bottom-10 right-12 dark:bg-zinc-800 rounded-2xl dark:border-white/10 md:block text-shadow-sm"
+            >
+              <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center w-10 h-10 font-bold text-white bg-orange-500 rounded-lg">
+                  3+
+                </div>
+                <div className="text-xs font-bold tracking-tighter uppercase dark:text-white">
+                  Years Of <br /> Experience
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>

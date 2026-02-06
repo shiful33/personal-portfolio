@@ -9,6 +9,7 @@ import {
   FaHeart,
 } from "react-icons/fa";
 import { SiCodeceptjs } from "react-icons/si";
+import Logo from "./Logo";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -41,15 +42,7 @@ const Footer = () => {
         <div className="grid items-start grid-cols-1 gap-12 mb-16 md:grid-cols-3">
           {/* Logo & Bio */}
           <div className="space-y-6">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-2 text-xl font-black text-gray-700 dark:text-white font-title"
-            >
-              <span className="px-3 py-1 text-white bg-[#ff6900] shadow-lg rounded-xl shadow-orange-500/20">
-                <SiCodeceptjs />
-              </span>
-              Shiful Islam
-            </motion.div>
+            <Logo />
             <p className="max-w-xs leading-relaxed text-gray-500 dark:text-gray-400">
               {t("footer_bio")}
             </p>
