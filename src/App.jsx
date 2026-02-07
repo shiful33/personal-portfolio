@@ -13,6 +13,7 @@ import ChatBot from "./component/ChatBot";
 import SkillMarquee from "./component/SkillMarquee";
 import Loader from "./component/Loader";
 import { useTranslation } from 'react-i18next';
+import Certification from "./component/Certification";
 
 
 function App() {
@@ -51,6 +52,10 @@ function App() {
             </section>
             <section id="about">
               <About />
+            </section>
+
+            <section id="certification">
+              <Certification />
             </section>
 
             <section id="skillMarquee">

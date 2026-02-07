@@ -7,6 +7,7 @@ const resources = {
       // Navbar
       nav_home: "Home",
       nav_about: "About",
+      nav_certification: "Certification",
       nav_skills: "Skills",
       nav_services: "Services",
       nav_projects: "Projects",

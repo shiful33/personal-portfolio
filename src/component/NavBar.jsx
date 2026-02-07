@@ -13,7 +13,7 @@ import { BiSolidTorch } from "react-icons/bi";
 import { GiSkills } from "react-icons/gi";
 import { GrServicePlay } from "react-icons/gr";
 import { FaUserAstronaut } from "react-icons/fa";
-import { SiCodeceptjs } from "react-icons/si";
+import { GrCertificate } from "react-icons/gr";
 import Logo from "./Logo";
 
 const Navbar = () => {
@@ -40,6 +40,7 @@ const Navbar = () => {
       const sections = [
         { name: "Home", id: "hero" },
         { name: "About", id: "about" },
+        { name: "Certification", id: "certification" },
         { name: "Skills", id: "skills" },
         { name: "Services", id: "services" },
         { name: "Projects", id: "projects" },
@@ -60,6 +61,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", key: "nav_home", link: "#hero", icon: <HiOutlineHome /> },
     { name: "About", key: "nav_about", link: "#about", icon: <FaUserAstronaut /> },
+    { name: "Certification", key: "nav_certification", link: "#certification", icon: <GrCertificate /> },
     { name: "Skills", key: "nav_skills", link: "#skills", icon: <GiSkills /> },
     { name: "Services", key: "nav_services", link: "#services", icon: <GrServicePlay /> },
     { name: "Projects", key: "nav_projects", link: "#projects", icon: <HiOutlineBriefcase /> },
@@ -74,7 +76,7 @@ const Navbar = () => {
         <Logo />
 
         {/* Desktop Links */}
-        <ul className="relative items-center hidden gap-2 lg:flex">
+        <ul className="relative items-center hidden gap-2 lg:flex text-[14px]">
           {navLinks.map((item) => (
             <motion.li 
               key={item.name}
@@ -86,7 +88,7 @@ const Navbar = () => {
               <a
                 href={item.link}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 relative z-10 ${
-                  active === item.name ? "text-white" : "text-gray-600 dark:text-gray-300"
+                  active === item.name ? "text-white" : "text-[#000b69] dark:text-gray-300"
                 }`}
               >
                 {/* Icon Container with Celebration Effect */}

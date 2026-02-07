@@ -19,7 +19,6 @@ const Hero = () => {
   const [index, setIndex] = useState(0);
   const [isDark, setIsDark] = useState(false);
 
-  // আরবিক ল্যাঙ্গুয়েজ কিনা চেক করার জন্য
   const isArabic = i18n.language === "ar";
 
   useEffect(() => {
